@@ -32,8 +32,8 @@ This is a very small library that is intended to do two things:
 
 ### Building with Leiningen
 
-```
-(defproject lanyrd-embed "0.1.0-SNAPSHOT"
+```clojure
+(defproject myproject "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojurescript "1.9.521" :exclusions [org.apache.ant/ant]]
                  [trieloff/clojurescript-openwhisk "0.1.0"]
                  [org.clojure/clojure "1.8.0"]]
@@ -44,7 +44,7 @@ This is a very small library that is intended to do two things:
     :builds [{:id "server"
               :source-paths ["src/cljs"]
               :jar true
-              :compiler {:main lanyrd-embed.core
+              :compiler {:main mypriject.core
                          :output-to "main.js"
                          :language-in  :ecmascript5
                          :language-out :ecmascript5
