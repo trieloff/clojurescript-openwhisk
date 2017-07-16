@@ -1,6 +1,9 @@
 # clojurescript-openwhisk
 Making it easier to write OpenWhisk functions using ClojureScript
 
+[![Clojars Project](https://img.shields.io/clojars/v/trieloff/clojurescript-openwhisk.svg)](https://clojars.org/trieloff/clojurescript-openwhisk)
+
+
 ## Background
 
 This is a very small library that is intended to do two things:
