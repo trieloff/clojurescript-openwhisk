@@ -33,3 +33,7 @@ This is a very small library that is intended to do two things:
 ### Building with Leiningen
 
 …
+
+## Examples
+
+* [Lanyrd-Embed](https://github.com/trieloff/lanyrd-embed/tree/dev) – Adding OEmbed Support for Lanyrd
