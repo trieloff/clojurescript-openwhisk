@@ -14,7 +14,7 @@ This is a very small library that is intended to do two things:
 ## Installing
 
 ```clojure
-[trieloff/clojurescript-openwhisk "0.1.0"]
+[trieloff/clojurescript-openwhisk "0.1.1"]
 ```
 
 ```clojure
