@@ -1,9 +1,13 @@
 (ns openwhisk.wrap
   (:require [promesa.core :as p]))
 
-(defmacro defnw [name args body]
-  "defines a wrapped function"
+(defmacro defaction [name args body]
+  "Defines an OpenWhisk action. It will create a function with name `name` that can be exported in the JavaScript module and called by OpenWhisk."
   `(def ~name (wrap (fn ~args ~body))))
+
+(defmacro defweb [name args headers body]
+  "Defines an OpenWhisk web action. In addition to `defaction`, it will pass through `headers`. "
+  `(def ~name (wrap ~headers (fn ~args ~body))))
 
 #?(:cljs (defn clj-promise->js [o]
   "`clj->js` with support for promises"
