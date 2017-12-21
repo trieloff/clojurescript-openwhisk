@@ -11,9 +11,26 @@
     (p/then o (fn [r] (p/resolved (clj->js r))))
     (clj->js o))))
 
-#?(:cljs (defn wrap [cljsfunc]
+#?(:cljs (defn clj->json [o]
+  "Turns object `o` into a stringified JSON object."
+  (.stringify js/JSON (clj->js o))))
+
+#?(:cljs (defn wrap-headers [r headers]
+  "Wraps value `r` in a JSON object compatible with OpenWhisk web actions, using headers `headers`."
+  (clj->js {:headers headers :body (clj->json r)})))
+
+#?(:cljs (defn clj-promise->json [o headers]
+  "`clj->js` with support for promises and headers"
+  (if (p/promise? o)
+    (p/then o (fn [r] (p/resolved (wrap-headers r headers))))
+    (wrap-headers o headers))))
+
+#?(:cljs (defn wrap
   "Wraps a ClojureScript function so that it can be used as OpenWhisk main function"
-  (fn [args] (clj-promise->js (cljsfunc (js->clj args :keywordize-keys true))))))
+  ([headers cljsfunc]
+    (fn [args] (clj-promise->json (cljsfunc (js->clj args :keywordize-keys true)) headers)))
+  ([cljsfunc]
+    (fn [args] (clj-promise->js (cljsfunc (js->clj args :keywordize-keys true)))))))
 
 #?(:cljs (defn wrapfn [cljsfunc]
   "Wraps and exports a ClojureScript function as OpenWhisk main function"
