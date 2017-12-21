@@ -1,4 +1,4 @@
-(defproject trieloff/clojurescript-openwhisk "0.2.1-SNAPSHOT"
+(defproject trieloff/clojurescript-openwhisk "0.2.2-SNAPSHOT"
   :dependencies [[org.clojure/clojurescript "1.9.521" :exclusions [org.apache.ant/ant]]
                  [funcool/promesa "1.8.1"]
                  [org.clojure/clojure "1.8.0"]]

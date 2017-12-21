@@ -21,7 +21,9 @@
 
 #?(:cljs (defn wrap-headers [r headers]
   "Wraps value `r` in a JSON object compatible with OpenWhisk web actions, using headers `headers`."
-  (clj->js {:headers headers :body (clj->json r)})))
+  (clj->js {:headers headers
+            :statusCode 200
+            :body (clj->json r)})))
 
 #?(:cljs (defn clj-promise->json [o headers]
   "`clj->js` with support for promises and headers"
