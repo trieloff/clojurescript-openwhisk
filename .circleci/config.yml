@@ -40,3 +40,11 @@ jobs:
         
       # run tests!
       - run: lein test
+      
+      # deploy
+      - run: 
+          command: lein deploy clojars-snapshot
+          name: Publish Snapshot to Clojars
+          filters:
+            branches:
+              only: master

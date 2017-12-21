@@ -12,6 +12,10 @@
             [lein-doo "0.1.7"]]
   :clean-targets ^{:protect false} ["target"]
   :hooks [leiningen.cljsbuild]
+  :deploy-repositories [["clojars-snapshot" {:url "https://clojars.org/repo"
+                                             :username :env/clojars_username
+                                             :password :env/clojars_password
+                                             :sign-releases false}]]
   :cljsbuild {
     :builds [{:id "prod"
               :source-paths ["src/cljs"]
